@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.21)
+project(libm_parallel)
+find_package(OpenMP)
+#add_executable(libm_parallel main.cpp)
+#target_link_libraries(libm_parallel OpenMP::OpenMP_CXX)
+add_subdirectory(polynomial_generator)
+#option(EXIT_ON_THRESHOLD "Set TRUE to exit when the maximum number of iterations is reached" OFF)
