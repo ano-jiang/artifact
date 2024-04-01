@@ -1,0 +1,1 @@
+time mpirun.mpich -n 1 ../cmake-build-release-kp/polynomial_generator/polygen-estrin-fma ./cfg_files/log2-estrin-fma.txt /home/yixin/wxl/rlibm-prog/Float34ROLog2Intervals

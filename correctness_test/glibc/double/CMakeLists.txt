@@ -1,0 +1,10 @@
+
+find_package(OpenMP)
+file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS "src/*.c")
+foreach(SOURCE ${SOURCES})
+    get_filename_component(EXECUTABLE_NAME ${SOURCE} NAME_WE)
+    set(EXECUTABLE_NAME "correct_test_glibc_dbl_${EXECUTABLE_NAME}")
+    add_executable(${EXECUTABLE_NAME} ${SOURCE})
+    target_compile_options(${EXECUTABLE_NAME} PRIVATE -std=c11 -O3)
+    target_link_libraries(${EXECUTABLE_NAME} PRIVATE OpenMP::OpenMP_C prlibm m)
+endforeach()

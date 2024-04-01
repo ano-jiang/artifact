@@ -1,0 +1,10 @@
+
+file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS "src/*.c")
+foreach(SOURCE ${SOURCES})
+    get_filename_component(EXECUTABLE_NAME ${SOURCE} NAME_WE)
+    set(EXECUTABLE_NAME "perf_test_${EXECUTABLE_NAME}")
+    add_executable(${EXECUTABLE_NAME} ${SOURCE})
+    target_compile_options(${EXECUTABLE_NAME} PRIVATE -std=c11 -O0 -frounding-math -fsignaling-nans)
+    target_include_directories(${EXECUTABLE_NAME} PRIVATE ../include)
+    target_link_libraries(${EXECUTABLE_NAME} PRIVATE $ENV{RLIBM_LIB} gmp m)
+endforeach()

@@ -1,0 +1,12 @@
+polynomial_generator/new_logs
+polynomial_generator/obj
+polynomial_generator/function_time.xlsx
+polynomial_generator/nohup.out
+polynomial_generator/parallel_timing.sh
+polynomial_generator/logs
+correctness_test/logs
+cmake-build-release
+nohup.out
+cmake-build-debug
+cmake-build-release-kp
+cmake-build-release-intel
