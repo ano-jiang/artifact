@@ -2,13 +2,12 @@
 #Usage: . ./runGLIBC.sh
 echo -e "Performance testing"
 
-
 obj_dir="cmake-build-release-intel"
 log_dir="intel"
 
 cd ../
-echo ". ./build.sh $1"
-. ./build.sh $1
+echo ". ./build.sh"
+. ./build.sh
 
 logs="logs-${log_dir}"
 cd performance_test/glibc/double || exit

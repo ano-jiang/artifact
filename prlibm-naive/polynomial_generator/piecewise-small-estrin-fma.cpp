@@ -353,27 +353,6 @@ void rlibm_weighted_random_sample(sample_info* sampled_indices, size_t ssize,
     //  check_sorted(sampled_indices, ssize);
 }
 
-uint64_t m_ulpd(double x, double y) {
-    if (x == 0)//if x is -0
-        x = 0; // -0 == 0
-    if (y == 0)
-        y = 0; // -0 == 0
-
-    if (x != x && y != y) return 0;//if x and y is NAN, then return 0
-
-    if (x != x)//if x is NAN,then return Maximum error
-        return ULONG_MAX - 1; // Maximum error
-    if (y != y)
-        return ULONG_MAX - 1; // Maximum error
-
-    int64_t xx = *((int64_t * ) & x);
-    xx = xx < 0 ? LONG_MAX - xx : xx;
-
-    int64_t yy = *((int64_t * ) & y);
-    yy = yy < 0 ? LONG_MAX - yy : yy;
-    return xx >= yy ? xx - yy : yy - xx;
-}
-
 
 size_t
 rlibm_compute_violated_indices(size_t *violated_indices, interval_data *intervals, size_t nentries, polynomial *poly,
@@ -415,7 +394,6 @@ void rlibm_evaluate_and_update_weights(size_t *violated_indices, size_t num_viol
         for (size_t i = 0; i < num_violated_indices; i++) {
             size_t vindex = violated_indices[i];
             intervals[vindex].w = intervals[vindex].w * 2;
-            //intervals[vindex].w *= 1 + ulps[vindex] / 8.0;
         }
     }
 }
@@ -668,7 +646,7 @@ int main(int argc, char **argv) {
                 }
 //                break;
 //                if(!is_record && n_violated_indices<min_violate[world_rank]){
-//                    gettimeofday(&end, NULL); // 记录结束时间
+//                    gettimeofday(&end, NULL);
 //                    execution_time3_sec=((end.tv_sec - start.tv_sec) + (end.tv_usec - start.tv_usec) / 1000000.0);
 //                    is_record=true;
 //                    itr=total_iterations;

@@ -10,3 +10,5 @@ nohup.out
 cmake-build-debug
 cmake-build-release-kp
 cmake-build-release-intel
+performance_test/glibc/float/log.i
+performance_test/glibc/double/log.i

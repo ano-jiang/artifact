@@ -1,21 +1,12 @@
 #!/bin/bash
-#Usage: ./runRLIBM.sh platform
+#Usage: ./runRLIBM.sh
 echo -e "Performance testing"
-if [ $# -ne 1 ]; then
-  echo "Usage: ./runRLIBM.sh platform"
-  exit
-fi
+
+obj_dir="cmake-build-release-intel"
+log_dir="intel"
 
 cd ../
-if [ $1 = 'k' ]; then
-  obj_dir="cmake-build-release-kp"
-  log_dir="kp"
-else
-  obj_dir="cmake-build-release-intel"
-  log_dir="intel"
-fi
-
-. ./build.sh $1
+. ./build.sh
 obj_dir_pref="../../${obj_dir}/performance_test/rlibm"
 
 logs="logs-${log_dir}"
