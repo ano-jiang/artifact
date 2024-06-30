@@ -1,4 +1,4 @@
-# Artifact
+# Parallel Optimization for Accelerating the Generation of Correctly Rounded Elementary Functions
 This library presents a parallel method to accelerate the generation of correctly rounded elementary mathematical functions.
 The artifact includes: (1) 6 correctly rounded elementary functions, (2) correctness testing framework for the 6 functions, 
 (3) performance testing framework to demonstrate the performance improvements over RLIBM and glibc, and 
@@ -20,7 +20,9 @@ To use the polynomial generator, it needs reduced intervals generated.
 It also requires Soplex installed with the the SOPLEX_INCLUDE and SOPLEX_LIB environment variables set as described in RLIBM-
 ALL(https://github.com/rutgers-apl/rlibm-all). After SOPLEX has been installed, `cd` to the root directory of 
 the artifact, set the correct path in the file `env.sh`.
-Next, to generate the polynomial for Log2, execute the following commands.
+Next, to generate the polynomial for Log2 with 64-core (If you want to enable a different number of threads, edit `env.sh` 
+to change `OMP_NUM_THREADS` to the number of threads you want, or set the `OMP_NUM_THREADS` environment variable before 
+running `mpirun.mpich` command), execute the following commands: 
 ```shell
 cd artifact/
 . ./build.sh
